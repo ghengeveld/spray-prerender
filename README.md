@@ -11,20 +11,17 @@ Use this Spray directive that prerenders a javascript-rendered page using an ext
 
 1:add dependency on your 
 
-    "com.github.jarlakxen" %% "spray-prerender" % "1.0"
+    "com.github.ghengeveld" %% "spray-prerender" % "1.0"
 
 2:Add this line to your code
-
     
-    implicit val prerenderConfig = routePrerender("10.254.169.132:9290", actorRefFactory)
+    val prerenderConfig = routePrerender("127.0.0.1:3000", actorRefFactory)
 
-
-     get {
+    get {
       prerender(prerenderConfig) {
         mustache("/index")
       }
     }
-
 
 `Note:` You need to extends or import PrerenderDirectives.
 `Note:` The first parameter of routePrerender is the ip and port of the Prerender server.
